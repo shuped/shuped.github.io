@@ -269,7 +269,8 @@ pre {
 }
 
 // Code block without prompt
-pre.output {
+pre.output,
+pre.ascii-art {
   &::before {
     content: none;
   }
