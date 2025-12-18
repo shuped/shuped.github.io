@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Hello World"
+title: "Agentic E2E Test Writing"
 date: 2025-12-17
 categories: [AI]
 ---
@@ -10,7 +10,8 @@ categories: [AI]
 A rudimentary solution:
 
 ```
-A sequential slash command `/analyze-tests` that processes test cases through a pipeline of specialized agents, producing a validated test plan and implementation guide.
+A sequential slash command `/analyze-tests` that processes test cases through
+a pipeline of specialized agents, producing a validated test plan and implementation guide.
 
 User pastes test table
         ↓
