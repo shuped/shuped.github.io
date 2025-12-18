@@ -5,7 +5,7 @@ date: 2025-12-17
 categories: [AI]
 ---
 
-# Creating end to end tests from a manual QA plan
+# Agenticaly creating end to end tests from a manual QA plan
 
 A rudimentary solution:
 
