@@ -4,14 +4,26 @@
   {% include head.html %}
 </head>
 <body>
-  {% include header.html %}
+  <div class="crt-overlay"></div>
 
-  <main class="site-content">
-    <div class="container">
+  <div class="terminal-window">
+    <header class="terminal-header">
+      <div class="terminal-buttons">
+        <span class="terminal-button close"></span>
+        <span class="terminal-button minimize"></span>
+        <span class="terminal-button maximize"></span>
+      </div>
+      <div class="terminal-title">
+        spencer@blog:<span class="path">~{% if page.url != '/' %}{{ page.url | remove: '.html' }}{% endif %}</span>
+      </div>
+    </header>
+
+    <main class="terminal-body">
+      {% include nav.html %}
       {{ content }}
-    </div>
-  </main>
+    </main>
 
-  {% include footer.html %}
+    {% include footer.html %}
+  </div>
 </body>
 </html>

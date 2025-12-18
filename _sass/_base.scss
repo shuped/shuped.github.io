@@ -1,20 +1,59 @@
-// Variables
-$color-primary: #1a1a2e;
-$color-accent: #0066cc;
-$color-accent-hover: #0052a3;
-$color-background: #ffffff;
-$color-background-alt: #f8f9fa;
-$color-text: #333333;
-$color-text-light: #666666;
-$color-border: #e0e0e0;
+// ============================================
+// PHOSPHOR TERMINAL THEME
+// A retro CRT terminal aesthetic
+// ============================================
 
-$font-stack: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-$font-mono: 'SF Mono', SFMono-Regular, Consolas, 'Liberation Mono', Menlo, monospace;
+// Color Palette
+$bg-void: #050508;           // Deepest black
+$bg-deep: #0a0c10;           // Primary background
+$bg-surface: #0d1117;        // Cards, elevated surfaces
+$bg-elevated: #161b22;       // Code blocks, inputs
+$bg-highlight: #1c2128;      // Hover states
 
-$max-width: 720px;
+$phosphor: #00ff41;          // Primary terminal green
+$phosphor-bright: #50ff7a;   // Highlighted green
+$phosphor-dim: #00aa2a;      // Secondary/muted text
+$phosphor-dark: #005f1a;     // Very dim green
+
+$cyan: #00d4ff;              // Links
+$cyan-dim: #0099bb;          // Link hover
+$amber: #ffb000;             // Dates, warnings
+$amber-dim: #cc8800;         // Muted amber
+$magenta: #ff79c6;           // Tags, accents
+$red: #ff5f56;               // Errors, close button
+$yellow: #ffbd2e;            // Minimize button
+$green: #27c93f;             // Maximize button
+
+$border: #21262d;
+$border-bright: #30363d;
+
+// Glow effects
+$glow-phosphor: 0 0 5px rgba(0, 255, 65, 0.4),
+                0 0 10px rgba(0, 255, 65, 0.2),
+                0 0 20px rgba(0, 255, 65, 0.1);
+$glow-phosphor-strong: 0 0 5px rgba(0, 255, 65, 0.6),
+                       0 0 15px rgba(0, 255, 65, 0.4),
+                       0 0 30px rgba(0, 255, 65, 0.2);
+$glow-cyan: 0 0 5px rgba(0, 212, 255, 0.4),
+            0 0 10px rgba(0, 212, 255, 0.2);
+
+// Typography
+$font-mono: 'JetBrains Mono', 'Fira Code', 'SF Mono', 'Consolas', 'Liberation Mono', monospace;
+$font-size-base: 16px;
+$line-height: 1.7;
+$letter-spacing: 0.02em;
+
+$max-width: 800px;
 $spacing: 1.5rem;
 
-// Reset
+// ============================================
+// FONTS
+// ============================================
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+// ============================================
+// RESET
+// ============================================
 *,
 *::before,
 *::after {
@@ -23,48 +62,131 @@ $spacing: 1.5rem;
   padding: 0;
 }
 
-// Base
+// ============================================
+// BASE STYLES
+// ============================================
 html {
-  font-size: 16px;
+  font-size: $font-size-base;
   scroll-behavior: smooth;
 }
 
 body {
-  font-family: $font-stack;
+  font-family: $font-mono;
   font-size: 1rem;
-  line-height: 1.6;
-  color: $color-text;
-  background-color: $color-background;
+  line-height: $line-height;
+  letter-spacing: $letter-spacing;
+  color: $phosphor-dim;
+  background-color: $bg-void;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
 }
 
-// Typography
+// ============================================
+// CRT EFFECTS
+// ============================================
+
+// Scanlines overlay
+.crt-overlay {
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.1) 0px,
+    rgba(0, 0, 0, 0.1) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+  z-index: 10000;
+}
+
+// Subtle screen flicker (reduced motion respects this)
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  92% { opacity: 1; }
+  93% { opacity: 0.9; }
+  94% { opacity: 1; }
+}
+
+// Blinking cursor
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+.cursor {
+  display: inline-block;
+  color: $phosphor;
+  animation: blink 1s step-end infinite;
+  text-shadow: $glow-phosphor;
+}
+
+// Typing effect (optional, for hero)
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+// ============================================
+// TYPOGRAPHY
+// ============================================
 h1, h2, h3, h4, h5, h6 {
-  color: $color-primary;
+  color: $phosphor;
   font-weight: 600;
   line-height: 1.3;
   margin-bottom: 0.5em;
+  text-shadow: $glow-phosphor;
 }
 
-h1 { font-size: 2.25rem; }
-h2 { font-size: 1.75rem; }
-h3 { font-size: 1.375rem; }
-h4 { font-size: 1.125rem; }
+h1 { font-size: 1.5rem; }
+h2 { font-size: 1.25rem; }
+h3 { font-size: 1.125rem; }
+h4 { font-size: 1rem; }
 
 p {
   margin-bottom: 1rem;
 }
 
 a {
-  color: $color-accent;
+  color: $cyan;
   text-decoration: none;
-  transition: color 0.2s ease;
+  transition: all 0.2s ease;
+  text-shadow: $glow-cyan;
 
   &:hover {
-    color: $color-accent-hover;
-    text-decoration: underline;
+    color: $phosphor-bright;
+    text-shadow: $glow-phosphor-strong;
   }
+}
+
+// Terminal-style links with brackets
+.terminal-link {
+  color: $cyan;
+
+  &::before { content: '['; color: $phosphor-dim; }
+  &::after { content: ']'; color: $phosphor-dim; }
+
+  &:hover {
+    color: $bg-deep;
+    background: $cyan;
+    text-shadow: none;
+
+    &::before, &::after { color: $cyan; background: $cyan; }
+  }
+}
+
+strong, b {
+  color: $phosphor;
+  font-weight: 600;
+}
+
+em, i {
+  color: $phosphor-dim;
+  font-style: italic;
 }
 
 ul, ol {
@@ -74,65 +196,162 @@ ul, ol {
 
 li {
   margin-bottom: 0.25rem;
+
+  &::marker {
+    color: $phosphor-dim;
+  }
+}
+
+// Custom list style
+ul.terminal-list {
+  list-style: none;
+  padding-left: 0;
+
+  li::before {
+    content: '>';
+    color: $phosphor;
+    margin-right: 0.5rem;
+    text-shadow: $glow-phosphor;
+  }
 }
 
 blockquote {
   margin: 1.5rem 0;
   padding: 1rem 1.5rem;
-  border-left: 4px solid $color-accent;
-  background: $color-background-alt;
-  color: $color-text-light;
+  border-left: 3px solid $phosphor;
+  background: $bg-surface;
+  color: $phosphor-dim;
   font-style: italic;
+
+  &::before {
+    content: '// ';
+    color: $phosphor-dark;
+  }
 }
 
-// Code
+// ============================================
+// CODE
+// ============================================
 code {
   font-family: $font-mono;
-  font-size: 0.875em;
-  background: $color-background-alt;
+  font-size: 0.9em;
+  background: $bg-elevated;
+  color: $magenta;
   padding: 0.2em 0.4em;
-  border-radius: 4px;
+  border-radius: 3px;
+  border: 1px solid $border;
 }
 
 pre {
   font-family: $font-mono;
   font-size: 0.875rem;
   line-height: 1.5;
-  background: $color-background-alt;
+  background: $bg-surface;
+  border: 1px solid $border;
+  border-radius: 4px;
   padding: 1rem;
-  border-radius: 8px;
   overflow-x: auto;
   margin-bottom: 1.5rem;
+  position: relative;
+
+  // Terminal prompt styling
+  &::before {
+    content: '$ ';
+    color: $phosphor-dim;
+  }
 
   code {
     background: none;
     padding: 0;
+    border: none;
+    color: $phosphor-dim;
   }
 }
 
-// Images
+// Code block without prompt
+pre.output {
+  &::before {
+    content: none;
+  }
+}
+
+// ============================================
+// IMAGES
+// ============================================
 img {
   max-width: 100%;
   height: auto;
   display: block;
+  border: 1px solid $border;
+  border-radius: 4px;
 }
 
-// Horizontal rule
+// ============================================
+// HORIZONTAL RULE
+// ============================================
 hr {
   border: none;
-  border-top: 1px solid $color-border;
   margin: 2rem 0;
+  color: $phosphor-dim;
+  text-align: center;
+  overflow: visible;
+
+  &::before {
+    content: '════════════════════════════════════════════════════════';
+    display: block;
+    color: $border-bright;
+  }
 }
 
-// Container
-.container {
-  max-width: $max-width;
-  margin: 0 auto;
-  padding: 0 $spacing;
-}
-
-// Selection
+// ============================================
+// SELECTION
+// ============================================
 ::selection {
-  background: $color-accent;
-  color: white;
+  background: $phosphor;
+  color: $bg-deep;
+  text-shadow: none;
+}
+
+// ============================================
+// SCROLLBAR
+// ============================================
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: $bg-deep;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $border-bright;
+  border-radius: 4px;
+
+  &:hover {
+    background: $phosphor-dim;
+  }
+}
+
+// Firefox
+* {
+  scrollbar-width: thin;
+  scrollbar-color: $border-bright $bg-deep;
+}
+
+// ============================================
+// REDUCED MOTION
+// ============================================
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .crt-overlay {
+    display: none;
+  }
 }

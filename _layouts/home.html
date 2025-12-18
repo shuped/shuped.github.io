@@ -3,33 +3,45 @@ layout: default
 ---
 
 <section class="hero">
-  <h1>{{ site.title }}</h1>
-  <p class="tagline">{{ site.author.bio }}</p>
-  <p class="intro">{{ site.description }}</p>
+  <p class="hero-command"><span class="prompt">spencer@blog:~$</span> <span class="cmd">whoami</span></p>
+
+  <pre class="ascii-art">
+███████╗██████╗ ███████╗███╗   ██╗ ██████╗███████╗██████╗
+██╔════╝██╔══██╗██╔════╝████╗  ██║██╔════╝██╔════╝██╔══██╗
+███████╗██████╔╝█████╗  ██╔██╗ ██║██║     █████╗  ██████╔╝
+╚════██║██╔═══╝ ██╔══╝  ██║╚██╗██║██║     ██╔══╝  ██╔══╝
+███████║██║     ███████╗██║ ╚████║╚██████╗███████╗██║
+╚══════╝╚═╝     ╚══════╝╚═╝  ╚═══╝ ╚═════╝╚══════╝╚═╝
+                                                    ███████╗██╗  ██╗██╗   ██╗██████╗ ███████╗
+                                                    ██╔════╝██║  ██║██║   ██║██╔══██╗██╔════╝
+                                                    ███████╗███████║██║   ██║██████╔╝█████╗
+                                                    ╚════██║██╔══██║██║   ██║██╔═══╝ ██╔══╝
+                                                    ███████║██║  ██║╚██████╔╝██║     ███████╗
+                                                    ╚══════╝╚═╝  ╚═╝ ╚═════╝ ╚═╝     ╚══════╝</pre>
+
+  <div class="hero-info">
+    <p class="info-line">{{ site.author.bio }}</p>
+    <p class="info-line"><span class="highlight">{{ site.author.company }}</span> · {{ site.author.location }}</p>
+    <p class="info-line">{{ site.description }}</p>
+  </div>
+
+  <p class="hero-status">[system ready]<span class="cursor">█</span></p>
 </section>
 
-<section class="posts">
-  <h2>Recent Posts</h2>
+<section class="posts-section">
+  <p class="posts-header"><span class="prompt">spencer@blog:~/posts$</span> <span class="cmd">ls -la</span></p>
 
   {% if site.posts.size > 0 %}
     <ul class="post-list">
       {% for post in site.posts limit:10 %}
         <li class="post-item">
-          <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %d, %Y" }}</time>
-          <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
-          {% if post.categories.size > 0 %}
-            <span class="categories">
-              {% for category in post.categories %}
-                <a href="{{ '/categories#' | append: category | relative_url }}" class="category">{{ category }}</a>
-              {% endfor %}
-            </span>
-          {% endif %}
-          {% if post.excerpt %}
-            <p class="excerpt">{{ post.excerpt | strip_html | truncatewords: 30 }}</p>
-          {% endif %}
+          <span class="post-permissions">drwxr-xr-x</span>
+          <time class="post-date" datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %d %Y" }}</time>
+          <a href="{{ post.url | relative_url }}" class="post-title-link">{{ post.title | downcase | replace: ' ', '-' }}</a>
         </li>
       {% endfor %}
     </ul>
+    <p class="posts-footer">spencer@blog:~/posts$<span class="cursor">█</span></p>
   {% else %}
     <p class="no-posts">No posts yet. Check back soon for content on AI development, software engineering, and learnings from the field.</p>
   {% endif %}

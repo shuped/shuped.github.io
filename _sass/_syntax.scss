@@ -1,71 +1,170 @@
-// Syntax highlighting (Rouge - GitHub-like theme)
+// ============================================
+// PHOSPHOR TERMINAL SYNTAX HIGHLIGHTING
+// ============================================
+
 .highlight {
-  background: $color-background-alt;
-  border-radius: 8px;
+  background: $bg-surface;
+  border: 1px solid $border;
+  border-left: 3px solid $phosphor-dim;
+  border-radius: 4px;
   margin-bottom: 1.5rem;
+  overflow-x: auto;
 
   pre {
     margin: 0;
+    padding: 1rem;
+    background: transparent;
+    border: none;
+
+    &::before {
+      content: none; // Remove the default $ prompt
+    }
   }
 
-  // Comments
-  .c, .c1, .cm, .cs { color: #6a737d; font-style: italic; }
+  code {
+    background: transparent;
+    border: none;
+    color: $phosphor-dim;
+  }
 
-  // Keywords
-  .k, .kc, .kd, .kn, .kp, .kr, .kt { color: #d73a49; }
+  // Comments - dim green
+  .c, .c1, .cm, .cs, .cp, .cpf {
+    color: $phosphor-dark;
+    font-style: italic;
+  }
 
-  // Strings
-  .s, .s1, .s2, .sb, .sc, .sd, .se, .sh, .si, .sr, .ss, .sx { color: #032f62; }
+  // Keywords - bright phosphor
+  .k, .kc, .kd, .kn, .kp, .kr, .kt, .kv {
+    color: $phosphor;
+    font-weight: 500;
+  }
 
-  // Numbers
-  .m, .mb, .mf, .mh, .mi, .mo, .mx { color: #005cc5; }
+  // Strings - cyan
+  .s, .s1, .s2, .sb, .sc, .sd, .se, .sh, .si, .sr, .ss, .sx, .dl {
+    color: $cyan;
+  }
 
-  // Names/identifiers
-  .n, .na, .nb, .nc, .nd, .ne, .nf, .ni, .nl, .nn, .no, .nt, .nv { color: #24292e; }
+  // Numbers - amber
+  .m, .mb, .mf, .mh, .mi, .mo, .mx, .il {
+    color: $amber;
+  }
 
-  // Functions
-  .nf { color: #6f42c1; }
+  // Names/identifiers - dim green
+  .n, .na, .nb, .ni, .nl, .nn, .no, .nt, .nv {
+    color: $phosphor-dim;
+  }
 
-  // Classes
-  .nc { color: #6f42c1; font-weight: 600; }
+  // Functions - magenta
+  .nf, .fm {
+    color: $magenta;
+  }
 
-  // Operators
-  .o, .ow { color: #d73a49; }
+  // Classes - bright phosphor
+  .nc, .ne {
+    color: $phosphor;
+    font-weight: 600;
+  }
 
-  // Punctuation
-  .p { color: #24292e; }
+  // Decorators/attributes - magenta
+  .nd, .at {
+    color: $magenta;
+  }
 
-  // Variables
-  .vi, .vg, .vc { color: #e36209; }
+  // Operators - phosphor
+  .o, .ow {
+    color: $phosphor;
+  }
 
-  // Built-in names
-  .nb { color: #005cc5; }
+  // Punctuation - dim
+  .p {
+    color: $phosphor-dim;
+  }
 
-  // Error
-  .err { color: #cb2431; background: #ffeef0; }
+  // Variables - amber
+  .vi, .vg, .vc, .vm {
+    color: $amber;
+  }
 
-  // Generic
-  .gd { color: #cb2431; background: #ffeef0; }
-  .gi { color: #22863a; background: #f0fff4; }
-  .gh { color: #005cc5; font-weight: 600; }
-  .gp { color: #6a737d; font-weight: 600; }
+  // Built-in names - cyan
+  .nb {
+    color: $cyan;
+  }
+
+  // Constants
+  .bp, .nb {
+    color: $cyan;
+  }
+
+  // Error - red
+  .err {
+    color: $red;
+    background: rgba($red, 0.1);
+  }
+
+  // Generic diff
+  .gd {
+    color: $red;
+    background: rgba($red, 0.1);
+  }
+  .gi {
+    color: $green;
+    background: rgba($green, 0.1);
+  }
+  .gh {
+    color: $phosphor;
+    font-weight: 600;
+  }
+  .gp {
+    color: $phosphor-dim;
+    font-weight: 600;
+  }
+  .gu {
+    color: $cyan;
+    font-weight: 600;
+  }
 
   // Line numbers
   .lineno {
-    color: #6a737d;
+    color: $phosphor-dark;
     padding-right: 1rem;
-    border-right: 1px solid $color-border;
+    border-right: 1px solid $border;
     margin-right: 1rem;
     user-select: none;
   }
+
+  // Special tokens
+  .nt { color: $magenta; } // Tag names (HTML/XML)
+  .na { color: $amber; }   // Attribute names
+  .nx { color: $phosphor-dim; } // Other names
+
+  // Ruby/Rails specific
+  .ss { color: $amber; }   // Symbols
+  .sr { color: $cyan; }    // Regex
+
+  // Shell
+  .nv { color: $amber; }   // Variables
+  .nb { color: $cyan; }    // Builtins
 }
 
-// Inline code in different contexts
+// Inline code in headings
 h1 code, h2 code, h3 code, h4 code {
   font-size: 0.9em;
+  color: $magenta;
 }
 
 // Code blocks in lists
 li pre {
   margin-top: 0.5rem;
+}
+
+// Language indicator (optional)
+.highlight[data-lang]::before {
+  content: attr(data-lang);
+  display: block;
+  padding: 0.25rem 1rem;
+  font-size: 0.75rem;
+  color: $phosphor-dark;
+  border-bottom: 1px solid $border;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
 }

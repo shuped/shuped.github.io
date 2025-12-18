@@ -4,16 +4,27 @@ layout: default
 
 <article class="post">
   <header class="post-header">
-    <h1 class="post-title">{{ page.title }}</h1>
-    <div class="post-meta">
-      <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %d, %Y" }}</time>
-      {% if page.categories.size > 0 %}
-        <span class="post-categories">
-          {% for category in page.categories %}
-            <a href="{{ '/categories#' | append: category | relative_url }}" class="category">{{ category }}</a>
-          {% endfor %}
+    <p class="post-command">
+      <span class="prompt">spencer@blog:~/posts$</span>
+      <span class="cmd">cat {{ page.date | date: "%Y-%m-%d" }}-{{ page.title | slugify }}.md</span>
+    </p>
+
+    <div class="post-title-block">
+      <h1 class="post-title">{{ page.title }}</h1>
+      <div class="post-meta">
+        <span class="meta-item">
+          <span class="label">Posted:</span>
+          <time class="value" datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%Y-%m-%d %H:%M:%S" }} UTC</time>
         </span>
-      {% endif %}
+        {% if page.categories.size > 0 %}
+          <span class="meta-item tags">
+            <span class="label">Tags:</span>
+            <span class="value">
+              {% for category in page.categories %}#{{ category }}{% unless forloop.last %} {% endunless %}{% endfor %}
+            </span>
+          </span>
+        {% endif %}
+      </div>
     </div>
   </header>
 
@@ -22,16 +33,17 @@ layout: default
   </div>
 
   <footer class="post-footer">
-    <p class="author-info">
-      Written by <strong>{{ site.author.name }}</strong>
-      {% if site.author.company %} at {{ site.author.company }}{% endif %}
-    </p>
+    <div class="post-eof">
+      <p><span class="comment">// Author:</span> {{ site.author.name }}</p>
+      <p><span class="comment">// EOF</span></p>
+    </div>
+
     <nav class="post-nav">
       {% if page.previous.url %}
-        <a href="{{ page.previous.url | relative_url }}" class="prev">&larr; {{ page.previous.title }}</a>
+        <a href="{{ page.previous.url | relative_url }}" class="prev">{{ page.previous.title | truncate: 40 }}</a>
       {% endif %}
       {% if page.next.url %}
-        <a href="{{ page.next.url | relative_url }}" class="next">{{ page.next.title }} &rarr;</a>
+        <a href="{{ page.next.url | relative_url }}" class="next">{{ page.next.title | truncate: 40 }}</a>
       {% endif %}
     </nav>
   </footer>

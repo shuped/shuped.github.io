@@ -4,6 +4,8 @@ title: About
 permalink: /about/
 ---
 
+<p class="hero-command"><span class="prompt">spencer@blog:~$</span> <span class="cmd">cat README.md</span></p>
+
 <div class="about-content" markdown="1">
 
 ## About Me

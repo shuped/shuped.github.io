@@ -5,7 +5,8 @@ permalink: /404.html
 ---
 
 <div class="error-page">
-  <h1>404</h1>
-  <p>The page you're looking for doesn't exist.</p>
-  <a href="{{ '/' | relative_url }}">Go back home</a>
+  <p class="error-code">404</p>
+  <p class="error-message">ERROR: File not found</p>
+  <p class="error-help">The requested resource does not exist on this server.</p>
+  <p><a href="{{ '/' | relative_url }}" class="terminal-link">cd ~</a></p>
 </div>

@@ -6,17 +6,18 @@ permalink: /categories/
 
 <div class="categories-page">
 
-<h1>Categories</h1>
+<p class="hero-command"><span class="prompt">spencer@blog:~$</span> <span class="cmd">ls -la ~/categories/</span></p>
 
 {% assign categories = site.categories | sort %}
 
 {% for category in categories %}
-  <h2 id="{{ category[0] }}">{{ category[0] | capitalize }}</h2>
+  <h2 id="{{ category[0] }}">#{{ category[0] | downcase }}</h2>
   <ul class="post-list">
     {% for post in category[1] %}
       <li class="post-item">
-        <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %d, %Y" }}</time>
-        <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+        <span class="post-permissions">-rw-r--r--</span>
+        <time class="post-date" datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %d %Y" }}</time>
+        <a href="{{ post.url | relative_url }}" class="post-title-link">{{ post.title | downcase | replace: ' ', '-' }}</a>
       </li>
     {% endfor %}
   </ul>
