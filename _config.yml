@@ -1,0 +1,48 @@
+# Site settings
+title: Spencer Shupe
+description: >-
+  Notes and learnings on AI development, software engineering, and the craft of building software.
+  A senior developer's journey through modern technology.
+author:
+  name: Spencer Shupe
+  bio: Product Engineering - Full-stack thinking, end-to-end ownership.
+  location: Kelowna, BC, Canada
+  company: QHR Technologies
+
+# Build settings
+baseurl: ""
+url: "https://shuped.github.io"
+permalink: /:year/:month/:day/:title/
+
+# Markdown settings
+markdown: kramdown
+highlighter: rouge
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+# Collections
+collections:
+  posts:
+    output: true
+    permalink: /:categories/:year/:month/:day/:title/
+
+# Categories for organization
+categories:
+  - ai
+  - development
+  - learnings
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# Exclude from build
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - .specify
+  - docs/speckit-learnings.md

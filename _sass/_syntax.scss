@@ -1,0 +1,71 @@
+// Syntax highlighting (Rouge - GitHub-like theme)
+.highlight {
+  background: $color-background-alt;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+
+  pre {
+    margin: 0;
+  }
+
+  // Comments
+  .c, .c1, .cm, .cs { color: #6a737d; font-style: italic; }
+
+  // Keywords
+  .k, .kc, .kd, .kn, .kp, .kr, .kt { color: #d73a49; }
+
+  // Strings
+  .s, .s1, .s2, .sb, .sc, .sd, .se, .sh, .si, .sr, .ss, .sx { color: #032f62; }
+
+  // Numbers
+  .m, .mb, .mf, .mh, .mi, .mo, .mx { color: #005cc5; }
+
+  // Names/identifiers
+  .n, .na, .nb, .nc, .nd, .ne, .nf, .ni, .nl, .nn, .no, .nt, .nv { color: #24292e; }
+
+  // Functions
+  .nf { color: #6f42c1; }
+
+  // Classes
+  .nc { color: #6f42c1; font-weight: 600; }
+
+  // Operators
+  .o, .ow { color: #d73a49; }
+
+  // Punctuation
+  .p { color: #24292e; }
+
+  // Variables
+  .vi, .vg, .vc { color: #e36209; }
+
+  // Built-in names
+  .nb { color: #005cc5; }
+
+  // Error
+  .err { color: #cb2431; background: #ffeef0; }
+
+  // Generic
+  .gd { color: #cb2431; background: #ffeef0; }
+  .gi { color: #22863a; background: #f0fff4; }
+  .gh { color: #005cc5; font-weight: 600; }
+  .gp { color: #6a737d; font-weight: 600; }
+
+  // Line numbers
+  .lineno {
+    color: #6a737d;
+    padding-right: 1rem;
+    border-right: 1px solid $color-border;
+    margin-right: 1rem;
+    user-select: none;
+  }
+}
+
+// Inline code in different contexts
+h1 code, h2 code, h3 code, h4 code {
+  font-size: 0.9em;
+}
+
+// Code blocks in lists
+li pre {
+  margin-top: 0.5rem;
+}

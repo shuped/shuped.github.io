@@ -1,0 +1,314 @@
+// Header
+.site-header {
+  padding: 1.5rem 0;
+  border-bottom: 1px solid $color-border;
+  background: $color-background;
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+}
+
+.site-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: $color-primary;
+  text-decoration: none;
+
+  &:hover {
+    color: $color-accent;
+    text-decoration: none;
+  }
+}
+
+.site-nav {
+  display: flex;
+  gap: 1.5rem;
+
+  a {
+    color: $color-text-light;
+    font-weight: 500;
+
+    &:hover,
+    &.active {
+      color: $color-accent;
+      text-decoration: none;
+    }
+  }
+}
+
+// Content
+.site-content {
+  min-height: calc(100vh - 200px);
+  padding: 3rem 0;
+}
+
+// Hero
+.hero {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid $color-border;
+
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .tagline {
+    font-size: 1.125rem;
+    color: $color-text-light;
+    margin-bottom: 1rem;
+  }
+
+  .intro {
+    max-width: 600px;
+    margin: 0 auto;
+    color: $color-text-light;
+  }
+}
+
+// Post list
+.posts {
+  h2 {
+    margin-bottom: 1.5rem;
+  }
+}
+
+.post-list {
+  list-style: none;
+  padding: 0;
+}
+
+.post-item {
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid $color-border;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  time {
+    display: block;
+    font-size: 0.875rem;
+    color: $color-text-light;
+    margin-bottom: 0.25rem;
+  }
+
+  h3 {
+    margin-bottom: 0.5rem;
+
+    a {
+      color: $color-primary;
+
+      &:hover {
+        color: $color-accent;
+      }
+    }
+  }
+
+  .excerpt {
+    color: $color-text-light;
+    margin-bottom: 0.5rem;
+  }
+
+  .categories {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+}
+
+.category {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.25rem 0.5rem;
+  background: $color-background-alt;
+  border-radius: 4px;
+  color: $color-text-light;
+
+  &:hover {
+    background: $color-accent;
+    color: white;
+    text-decoration: none;
+  }
+}
+
+.no-posts {
+  padding: 2rem;
+  text-align: center;
+  background: $color-background-alt;
+  border-radius: 8px;
+  color: $color-text-light;
+}
+
+// Single post
+.post {
+  max-width: 100%;
+}
+
+.post-header {
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid $color-border;
+}
+
+.post-title {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.post-meta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: $color-text-light;
+  font-size: 0.875rem;
+
+  time {
+    display: inline;
+  }
+}
+
+.post-categories {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.post-content {
+  margin-bottom: 2rem;
+
+  h2, h3, h4 {
+    margin-top: 2rem;
+  }
+
+  img {
+    margin: 1.5rem auto;
+    border-radius: 8px;
+  }
+}
+
+.post-footer {
+  padding-top: 2rem;
+  border-top: 1px solid $color-border;
+}
+
+.author-info {
+  color: $color-text-light;
+  margin-bottom: 1rem;
+}
+
+.post-nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+
+  .prev,
+  .next {
+    flex: 1;
+  }
+
+  .next {
+    text-align: right;
+  }
+}
+
+// Footer
+.site-footer {
+  padding: 2rem 0;
+  border-top: 1px solid $color-border;
+  text-align: center;
+  color: $color-text-light;
+  font-size: 0.875rem;
+
+  p {
+    margin-bottom: 0.5rem;
+  }
+}
+
+.footer-links {
+  .separator {
+    margin: 0 0.5rem;
+    color: $color-border;
+  }
+}
+
+// About page
+.about-content {
+  h2:first-child {
+    margin-top: 0;
+  }
+}
+
+// Categories page
+.categories-page {
+  h2 {
+    margin-top: 2rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid $color-border;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+}
+
+// 404 page
+.error-page {
+  text-align: center;
+  padding: 4rem 0;
+
+  h1 {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    font-size: 1.25rem;
+    color: $color-text-light;
+    margin-bottom: 2rem;
+  }
+}
+
+// Responsive
+@media (max-width: 600px) {
+  .site-header .container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .site-nav {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .post-title {
+    font-size: 1.75rem;
+  }
+
+  .post-meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .post-nav {
+    flex-direction: column;
+
+    .next {
+      text-align: left;
+    }
+  }
+}

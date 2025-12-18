@@ -1,0 +1,29 @@
+---
+layout: default
+title: Categories
+permalink: /categories/
+---
+
+<div class="categories-page">
+
+<h1>Categories</h1>
+
+{% assign categories = site.categories | sort %}
+
+{% for category in categories %}
+  <h2 id="{{ category[0] }}">{{ category[0] | capitalize }}</h2>
+  <ul class="post-list">
+    {% for post in category[1] %}
+      <li class="post-item">
+        <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %d, %Y" }}</time>
+        <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+      </li>
+    {% endfor %}
+  </ul>
+{% endfor %}
+
+{% if site.categories.size == 0 %}
+  <p class="no-posts">No categorized posts yet. Check back soon!</p>
+{% endif %}
+
+</div>
