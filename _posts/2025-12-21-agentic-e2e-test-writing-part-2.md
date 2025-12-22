@@ -47,4 +47,6 @@ User pastes test table
       Final Report
 ```
 
+I should add meta-learning next.
+
 Still a claude code command for now. These should have a structured output but will save that for when I migrate it to something like LangGraph.
