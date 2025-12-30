@@ -54,4 +54,4 @@ We've migrated the Claude Code slash command to LangGraph, and added auto implem
                 └────────────┘
 ```
 
-The failure paths all proceed to reporter immediately, but the added structure from LangGraph will help make these more robust in the future. I know Graph is in the name and I've seen it before, but implementing one finally internalized that you are, in fact, building a graph, not an imperitive flow.
+The failure paths all proceed to reporter immediately, but the added structure from LangGraph will help make these more robust in the future. I know Graph is in the name and I've seen it before, but implementing one finally internalized for me that you are, in fact, building a graph, not an imperitive flow.
